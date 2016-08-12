@@ -1,0 +1,28 @@
+{
+    "name": "bang",
+    "main": "./lib/bang",
+    "version": "0.0.1",
+    "description": "Run a shell command to filter the text or show the output",
+    "keywords": [
+        "shel",
+        "run",
+        "command",
+        "cmd",
+        "filter",
+        "text"
+    ],
+    "activationCommands": {
+        "atom-workspace": [
+            "bang:edit-text",
+            "bang:run-a-command"
+        ]
+    },
+    "license": "MIT",
+    "repository" : "https://github.com/isgj/bang.git",
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+    },
+    "dependencies": {
+        "atom-space-pen-views": "^2.0.0"
+    }
+}
