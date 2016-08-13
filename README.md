@@ -15,7 +15,7 @@ This function will:
  2. insert the output of the command in the editor
  	+ or replace the selected text if there is one
 
-![Bang: Edit Text](/img/edittext.gif "Bang: Edit text")
+![Bang: Edit Text](https://docs.google.com/uc?id=0B-Ll-WQ0AB9fMFN3S1VlTG9UX1k&export=download "Bang: Edit text")
 
 ------
 #### Bang : Run a command
@@ -29,7 +29,7 @@ This function will:
    + give as input to the command the selected text if there is one
 2. show a notification with the output of your command
 
-![Bang: Run A Command](/img/runacmd.gif "Bang: Run A Command")
+![Bang: Run A Command](https://docs.google.com/uc?id=0B-Ll-WQ0AB9fQ2QyelFCR2EwTlk&export=download "Bang: Run A Command")
 
 ---
 The base code of this package was (and is) [Go to line package](https://github.com/atom/go-to-line)
