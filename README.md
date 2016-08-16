@@ -25,6 +25,7 @@ This function will:
    - ctrl-alt-c
 
 This function will:
+
 1. run the command you enter
    + give as input to the command the selected text if there is one
 2. show a notification with the output of your command
