@@ -67,7 +67,7 @@ module.exports =
             input = editor?.getSelectedText()
             dirMessage = cwd + ':$ ' + cmd
             if @dryCmd and not input.length
-                exec cmd, cwd, (error, stdout, stderr) =>
+                exec cmd, cwd: cwd, (error, stdout, stderr) =>
                     if error
                         dirMessage += '\n' + stderr
                         atom.notifications.addWarning('Attention', {detail: dirMessage})
