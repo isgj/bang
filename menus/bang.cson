@@ -1,29 +1,29 @@
 'context-menu':
-    'atom-text-editor': [
-        {
-            'label': 'Edit with bang'
-            'command': 'bang:edit-text'
-        }
-        {
-            'label': 'Run a bang'
-            'command': 'bang:run-a-command'
-        }
-    ]
-'menu': [
+  'atom-text-editor': [
     {
-        'label': 'Packages'
-        'submenu': [
-            'label': 'Bang'
-            'submenu': [
-                {
-                    'label': 'Edit with bang'
-                    'command': 'bang:edit-text'
-                }
-                {
-                    'label': 'Run a bang'
-                    'command': 'bang:run-a-command'
-                }
-            ]
-        ]
+      'label': 'Edit with bang'
+      'command': 'bang:edit-text'
     }
+    {
+      'label': 'Run a bang'
+      'command': 'bang:run-a-command'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Bang'
+      'submenu': [
+        {
+          'label': 'Edit with bang'
+          'command': 'bang:edit-text'
+        }
+        {
+          'label': 'Run a bang'
+          'command': 'bang:run-a-command'
+        }
+      ]
+    ]
+  }
 ]
