@@ -2,7 +2,7 @@
 
 Run a shell command to filter the text or show the output in [Atom Text Editor](https://atom.io).
 
-![bang.gif](https://github.com/isgj/bang/blob/master/img/bang.gif?raw=true)
+![bang.gif](https://raw.githubusercontent.com/isgj/bang/198d271ee2630ba76c36eab9afe5c11ca4873a32/img/bang.gif)
 
 ## How to use
 
