@@ -5,8 +5,9 @@
 '.bang atom-text-editor[mini]':
   'enter': 'bang:confirm',
   'escape': 'bang:cancel',
-  'up': 'bang:next'
-  'down': 'bang:prev'
+  'up': 'bang:next',
+  'down': 'bang:prev',
+  'tab': 'bang:complete'
 
 '.platform-darwin .bang atom-text-editor[mini]':
   'cmd-w': 'bang:cancel'
