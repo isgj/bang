@@ -1,16 +1,19 @@
 '.platform-darwin, .platform-win32, .platform-linux':
-    'ctrl-alt-e': 'bang:edit-text'
-    'ctrl-alt-c': 'bang:run-a-command'
+  'ctrl-alt-e': 'bang:edit-text'
+  'ctrl-alt-c': 'bang:run-a-command'
 
 '.bang atom-text-editor[mini]':
-    'enter': 'bang:confirm',
-    'escape': 'bang:cancel'
+  'enter': 'bang:confirm',
+  'escape': 'bang:cancel',
+  'up': 'bang:next',
+  'down': 'bang:prev',
+  'tab': 'bang:complete'
 
 '.platform-darwin .bang atom-text-editor[mini]':
-    'cmd-w': 'bang:cancel'
+  'cmd-w': 'bang:cancel'
 
 '.platform-win32 .bang atom-text-editor[mini]':
-    'ctrl-w': 'bang:cancel'
+  'ctrl-w': 'bang:cancel'
 
 '.platform-linux .bang atom-text-editor[mini]':
-    'ctrl-w': 'bang:cancel'
+  'ctrl-w': 'bang:cancel'
