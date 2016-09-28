@@ -18,7 +18,7 @@ class BangView extends View
     @element
 
   setMessage: (text) ->
-    @message.text = text
+    @message.text text
 
   getEditor: ->
     @miniEditor
