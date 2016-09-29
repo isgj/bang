@@ -70,7 +70,7 @@ class BangCommands
 
   addCommand: (cmd) ->
     @query = null
-    newlist = (oldCmd for oldCmd in @cmdList when oldCmd isnt cmd)
+    newlist = (oldCmd for oldCmd in @cmdList? when oldCmd isnt cmd)
     @cmdList = newlist
     @cmdList.unshift cmd
 

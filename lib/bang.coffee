@@ -27,7 +27,11 @@ module.exports = Bang =
 
   activate: (state) ->
     # Restore previous state
-    @bangCommands = atom.deserializers.deserialize(state.bangCommandsState)
+    @bangCommands =
+      if state.bangCommandsState
+        atom.deserializers.deserialize(state.bangCommandsState)
+      else
+        new BangCommands(null)
 
     @bangView = new BangView()
     @modalPanel = atom.workspace.addModalPanel(item: @bangView.element, visible: false)
