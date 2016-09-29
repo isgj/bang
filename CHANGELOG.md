@@ -1,3 +1,8 @@
+## 2.0.1
+* Fixes issue #2
+	* Check if it is the first run
+	* Check if the history list is emty
+
 ## 2.0.0
 * Refactor the package
 * Pressing `Up arrow` :arrow_up: and `Down arrow` :arrow_down: will cycle through the command history
