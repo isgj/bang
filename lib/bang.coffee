@@ -40,7 +40,9 @@ module.exports = Bang =
     @subscriptions = new CompositeDisposable
 
     # Register commands that toggles this view
-    @subscriptions.add atom.commands.add 'atom-text-editor', 'bang:edit-text', => @toggle()
+    @subscriptions.add atom.commands.add 'atom-text-editor', 'bang:edit-text', =>
+      @dryCmd = false
+      @toggle()
     @subscriptions.add atom.commands.add 'atom-workspace', 'bang:run-a-command', =>
       @dryCmd = true
       @toggle()
@@ -80,7 +82,7 @@ module.exports = Bang =
     @bangCommands.next = 0
     @restoreFocus() if miniEditorFocused
 
-  # This method id fired when we press ENTER
+  # This method is fired when we press ENTER
   confirm: ->
     cmd = @miniEditor.getText().trim()
     @bangCommands.addCommand cmd
@@ -105,15 +107,13 @@ module.exports = Bang =
     # Run an asynchronous process if there
     # is no input and don't have to edit the text
     if @dryCmd and not input.length
-      exec cmd, cwd: cwd, (error, stdout, stderr) =>
+      exec cmd, cwd: cwd, (error, stdout, stderr) ->
         if error
           dirMessage += '\n' + stderr
           atom.notifications.addWarning('Attention', {detail: dirMessage, dismissable: missNote})
-          @dryCmd = false
           return
         msgTitle = cwd + ':$ ' + cmd
         atom.notifications.addSuccess(msgTitle, {detail: stdout, dismissable: missNote})
-        @dryCmd = false
         return
       return
     try
@@ -122,13 +122,11 @@ module.exports = Bang =
     catch e
       dirMessage += '\n' + e.stderr.toString()
       atom.notifications.addWarning('Attention', {detail: dirMessage, dismissable: missNote})
-      @dryCmd = false
       return
     if output.length
       # Check where to put the output of cmd
       if @dryCmd
         atom.notifications.addSuccess(dirMessage, {detail: output, dismissable: missNote})
-        @dryCmd = false
       else
         range = editor.getSelectedBufferRange()
         editor.setTextInBufferRange range, output
@@ -160,8 +158,6 @@ module.exports = Bang =
     if suggestion isnt null
       range = @miniEditor.getModel().setTextInBufferRange range, suggestion
       @miniEditor.getModel().addSelectionForBufferRange range
-    else
-      @miniEditor.getModel().setTextInBufferRange range, ""
 
   # Try to complete the text from @bangCommands.matchList
   complete: ->
