@@ -1,7 +1,11 @@
+## 2.1.0
+* Handle better the dryCmd variable
+* Fix a typo thanks to @arnemart
+
 ## 2.0.1
 * Fixes issue #2
 	* Check if it is the first run
-	* Check if the history list is emty
+	* Check if the history list is empty
 
 ## 2.0.0
 * Refactor the package
