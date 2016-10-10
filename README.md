@@ -19,6 +19,19 @@ Run a shell command to filter the text or show the output in [Atom Text Editor](
 
 > If the file is not saved (untitled) the command will run in the Project directory
 
+## Custom Keybinding
+
+See [Keymaps In-Depth](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/) for more details.
+
+For example:
+
+```coffeescript
+'atom-workspace':
+	'ctrl-alt-e': 'bang:edit-text'
+	'ctrl-alt-c': 'bang:run-a-command'
+```
+> Use `atom-workspace` as selector.
+
 ---
 The base code of this package was (and is) [Go to line package](https://github.com/atom/go-to-line)
 
