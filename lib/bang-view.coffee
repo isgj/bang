@@ -5,7 +5,7 @@ class BangView extends View
     ## Attributes for the text editor to create
     cmdBuffer =
       mini: true
-      placeholderText: 'Eneter your command here'
+      placeholderText: 'Enter your command here'
     @div class: 'bang', =>
       @subview 'miniEditor', new TextEditorView(cmdBuffer)
       @div class: 'message', outlet: 'message'
