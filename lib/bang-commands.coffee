@@ -1,3 +1,4 @@
+_ = require 'underscore'
 module.exports =
 class BangCommands
   constructor: (data) ->
@@ -53,26 +54,23 @@ class BangCommands
     if word[...len] is @query
       @query = word
       if @matchList?
-        @matchList = (cmdEntry for cmdEntry in @matchList when @isIndexOf @query, cmdEntry)
+        @matchList = _.filter @matchList, (entry) =>
+          return entry?.length > @query.length and entry.startsWith @query
       else
         @matchList = []
     else
       @query = word
       if @cmdList isnt null
-        @matchList = (cmdEntry for cmdEntry in @cmdList when @isIndexOf @query, cmdEntry)
+        @matchList = _.filter @cmdList, (entry) =>
+          return entry?.length > @query.length and entry.startsWith @query
       else
         @matchList = []
     @matchList.unshift null
     @next = 0
 
-  isIndexOf: (index, entry) ->
-    return entry? and entry.length > index.length and entry.startsWith index
-
   addCommand: (cmd) ->
     @query = null
-    newlist = (oldCmd for oldCmd in @cmdList? when oldCmd isnt cmd)
-    @cmdList = newlist
-    @cmdList.unshift cmd
+    @cmdList = _.union cmd, @cmdList
 
   atom.deserializers.add(this)
 
