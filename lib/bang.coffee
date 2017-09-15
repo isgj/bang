@@ -15,6 +15,9 @@ module.exports = Bang =
     doNotAutoHideNotifications:
       type: 'boolean'
       default: true
+    shellPath:
+      type: 'string'
+      default: process.env.PATH
 
   bangView: null
   bangCommands: null
@@ -101,13 +104,14 @@ module.exports = Bang =
       # it's a new buffer
       cwd = @referenceDir()
     # The text to give as input to the command
-    input = editor?.getSelectedText()
+    input = editor?.getSelectedText()||editor?.getText()
     dirMessage = cwd + ':$ ' + cmd
     missNote = atom.config.get 'bang.doNotAutoHideNotifications'
     # Run an asynchronous process if there
     # is no input and don't have to edit the text
+    pathConfig = atom.config.get 'bang.shellPath'
     if @dryCmd and not input.length
-      exec cmd, cwd: cwd, (error, stdout, stderr) ->
+      exec cmd, {cwd: cwd, env: {PATH:pathConfig}}, (error, stdout, stderr) ->
         if error
           dirMessage += '\n' + stderr
           atom.notifications.addWarning('Attention', {detail: dirMessage, dismissable: missNote})
@@ -117,7 +121,7 @@ module.exports = Bang =
         return
       return
     try
-      output = execSync cmd, {cwd, input: input, timeout: 5e3}
+      output = execSync cmd, {cwd:cwd, input: input, env: {PATH:pathConfig}, timeout: 5e3}
       output = output.toString()
     catch e
       dirMessage += '\n' + e.stderr.toString()
@@ -129,6 +133,7 @@ module.exports = Bang =
         atom.notifications.addSuccess(dirMessage, {detail: output, dismissable: missNote})
       else
         range = editor.getSelectedBufferRange()
+        if range.isEmpty() then range = editor.getBuffer().getRange()
         editor.setTextInBufferRange range, output
 
   # Show the panel and get focus
