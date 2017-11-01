@@ -104,7 +104,7 @@ module.exports = Bang =
       # it's a new buffer
       cwd = @referenceDir()
     # The text to give as input to the command
-    input = editor?.getSelectedText()||editor?.getText()
+    input = editor?.getSelectedText()
     dirMessage = cwd + ':$ ' + cmd
     missNote = atom.config.get 'bang.doNotAutoHideNotifications'
     # Run an asynchronous process if there
@@ -133,7 +133,6 @@ module.exports = Bang =
         atom.notifications.addSuccess(dirMessage, {detail: output, dismissable: missNote})
       else
         range = editor.getSelectedBufferRange()
-        if range.isEmpty() then range = editor.getBuffer().getRange()
         editor.setTextInBufferRange range, output
 
   # Show the panel and get focus
