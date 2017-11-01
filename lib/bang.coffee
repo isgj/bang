@@ -15,7 +15,10 @@ module.exports = Bang =
     doNotAutoHideNotifications:
       type: 'boolean'
       default: true
-    shellPath:
+    shell:
+      type: 'string'
+      default: process.env.SHELL
+    path:
       type: 'string'
       default: process.env.PATH
 
@@ -106,12 +109,16 @@ module.exports = Bang =
     # The text to give as input to the command
     input = editor?.getSelectedText()
     dirMessage = cwd + ':$ ' + cmd
+
+    # Get the configurations
     missNote = atom.config.get 'bang.doNotAutoHideNotifications'
+    shellConfig = atom.config.get 'bang.shell'
+    pathConfig = atom.config.get 'bang.path'
+
     # Run an asynchronous process if there
     # is no input and don't have to edit the text
-    pathConfig = atom.config.get 'bang.shellPath'
     if @dryCmd and not input.length
-      exec cmd, {cwd: cwd, env: {PATH:pathConfig}}, (error, stdout, stderr) ->
+      exec cmd, {cwd: cwd, env: {PATH:pathConfig}, shell: shellConfig}, (error, stdout, stderr) ->
         if error
           dirMessage += '\n' + stderr
           atom.notifications.addWarning('Attention', {detail: dirMessage, dismissable: missNote})
@@ -121,7 +128,7 @@ module.exports = Bang =
         return
       return
     try
-      output = execSync cmd, {cwd:cwd, input: input, env: {PATH:pathConfig}, timeout: 5e3}
+      output = execSync cmd, {cwd:cwd, input: input, env: {PATH:pathConfig}, shell: shellConfig, timeout: 5e3}
       output = output.toString()
     catch e
       dirMessage += '\n' + e.stderr.toString()
