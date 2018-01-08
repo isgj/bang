@@ -1,7 +1,7 @@
 {
   "name": "bang",
   "main": "./lib/bang",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Run a shell command to filter the text or show the output",
   "keywords": [
     "shel",
@@ -25,8 +25,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^4.15.0",
     "eslint-config-standard": "^11.0.0-beta.0"
