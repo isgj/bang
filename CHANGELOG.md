@@ -1,3 +1,11 @@
+## 2.3.0
+* Move to ES6 JS
+
+## 2.2.0
+* Add SHELL option
+* Add PATH option for the SHELL
+
+
 ## 2.1.0
 * Handle better the dryCmd variable
 * Fix a typo thanks to @arnemart
