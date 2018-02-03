@@ -14,7 +14,8 @@
   "activationCommands": {
     "atom-workspace": [
       "bang:edit-text",
-      "bang:run-a-command"
+      "bang:run-a-command",
+      "bang:result-in-new-document"
     ]
   },
   "deserializers": {

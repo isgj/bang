@@ -1,3 +1,8 @@
+## 2.4.0
+* Add new command
+    * Result in new document will output to a new untitled document
+    * idea from @ghoetker
+
 ## 2.3.0
 * Move to ES6 JS
 
