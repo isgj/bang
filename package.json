@@ -1,7 +1,7 @@
 {
   "name": "bang",
   "main": "./lib/bang",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Run a shell command to filter the text or show the output",
   "keywords": [
     "shel",
